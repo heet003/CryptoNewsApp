@@ -7,10 +7,10 @@ function App() {
   const [news, setNews] = useState([]);
   const options = {
     method: "GET",
-    url: "https://investing-cryptocurrency-markets.p.rapidapi.com/coins/get-news?pair_ID=1057391&page=1&time_utc_offset&lang_ID=1",
+    url: `${process.env.REACT_APP_API_URL}`,
     headers: {
-      "X-RapidAPI-Key": "dfeee1f073msh5f9bc151904928cp1f3eddjsn35fd98560012",
-      "X-RapidAPI-Host": "investing-cryptocurrency-markets.p.rapidapi.com",
+      "X-RapidAPI-Key": `${process.env.REACT_APP_API_KEY}`,
+      "X-RapidAPI-Host": `${process.env.REACT_APP_API_HOST}`,
     },
   };
 
@@ -20,14 +20,14 @@ function App() {
         const response = await axios.request(options);
         const data = response.data.data[0].screen_data.news;
         setNews(data);
-        console.log(response.data.data[0].screen_data.news);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [options]);
 
   return (
     <div className="App">
