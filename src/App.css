@@ -7,6 +7,11 @@ p {
   color: #48CFA8;
 }
 
+p {
+  font-size: 1.3rem;
+  font-family: "Newsreader", serif;
+}
+
 .news-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
@@ -14,4 +19,8 @@ p {
   margin: 5% auto;
   padding: 0 20px;
   justify-items: center;
+}
+
+.news-container a {
+  text-decoration: none;
 }
